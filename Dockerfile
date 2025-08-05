@@ -39,11 +39,7 @@ RUN source /opt/conda/etc/profile.d/conda.sh && \
     conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r && \
     # Create the environment, clean cache, upgrade JAX via pip
     conda env create -f environment.yml && \
-    conda clean -afy && \
-    conda activate evobind && \
-    pip install --no-cache-dir --upgrade "jax[cuda12_pip]" \
-      -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html && \
-    conda deactivate
+    conda clean -afy
 
 # 6) Build HH-suite from source
 RUN git clone https://github.com/soedinglab/hh-suite.git && \
