@@ -22,10 +22,7 @@ RUN wget -qO /tmp/miniconda.sh \
       https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
     bash /tmp/miniconda.sh -b -p "$CONDA_DIR" && \
     rm /tmp/miniconda.sh && \
-    conda clean -afy && \
-    conda activate evobind && \
-    pip install --upgrade "jax[cuda12_pip]==0.4.30" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html && \
-    conda deactivate
+    conda clean -afy
 
 # 3) Enable 'conda activate' in non-interactive shells
 RUN conda init bash
@@ -43,6 +40,10 @@ RUN source /opt/conda/etc/profile.d/conda.sh && \
     # Create the environment, clean cache, upgrade JAX via pip
     conda env create -f environment.yml && \
     conda clean -afy
+
+RUN conda run -n evobind pip install --upgrade \
+      "jax[cuda12_pip]==0.4.30" \
+      -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 
 # 6) Build HH-suite from source
 RUN git clone https://github.com/soedinglab/hh-suite.git && \
