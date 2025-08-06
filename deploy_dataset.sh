@@ -20,7 +20,7 @@ cd "${HOME}/EvoBind/params"
 
 log "Downloading AF2 parameters from S3: alphafold_params_2021-07-14.tar"
 # show progress bar, no --quiet
-aws s3 cp s3://crayonai.datasets/alphafold_params_2021-07-14.tar ./ \
+aws s3 cp s3://crayonai.us-east-1/data/alphafold_params_2021-07-14.tar ./ \
     --only-show-errors
 
 log "Extracting AF2 parameters"
@@ -35,7 +35,7 @@ mkdir -p "${HOME}/EvoBind/data"
 cd "${HOME}/EvoBind/data"
 
 log "Downloading UniClust30 archive from S3"
-aws s3 cp s3://crayonai.datasets/uniclust30_2018_08_hhsuite.tar.gz ./ \
+aws s3 cp s3://crayonai.us-east-1/data/uniclust30_2018_08_hhsuite.tar.gz ./ \
     --only-show-errors
 
 log "Extracting UniClust30 database"
