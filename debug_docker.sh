@@ -17,7 +17,7 @@ aws s3 cp s3://crayonai.docker/evobind-full.tar ./ --quiet
 docker load -i evobind-full.tar
 
 # ── 3) Launch an interactive container for debugging
-docker run -it \
+docker run --rm -it \
   --name evobind_debug \
   --gpus all \
   -v "$HOME/evobind/params":/opt/EvoBind/src/AF2/params:ro \
