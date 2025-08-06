@@ -41,6 +41,9 @@ RUN source /opt/conda/etc/profile.d/conda.sh && \
     conda env create -f environment.yml && \
     conda clean -afy
 
+RUN conda install -y -n evobind -c nvidia cudnn=9.1.1.17 && \
+    conda clean -afy
+    
 RUN conda run -n evobind pip install --upgrade \
       "jax[cuda12_pip]==0.4.30" \
       -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
