@@ -7,16 +7,16 @@ log() {
 }
 
 # Create a log file
-LOGFILE="${HOME}/evobind/prepare_data.$(date +'%Y%m%d_%H%M%S').log"
+LOGFILE="${HOME}/EvoBind/prepare_data.$(date +'%Y%m%d_%H%M%S').log"
 mkdir -p "$(dirname "$LOGFILE")"
 exec > >(tee -a "$LOGFILE") 2>&1
 
 log "=== Starting data preparation ==="
 
 # ── 1. Prepare AlphaFold parameters ──────────────────────────────────────────
-log "Creating AF2 params directory: ${HOME}/evobind/params"
-mkdir -p "${HOME}/evobind/params"
-cd "${HOME}/evobind/params"
+log "Creating AF2 params directory: ${HOME}/EvoBind/params"
+mkdir -p "${HOME}/EvoBind/params"
+cd "${HOME}/EvoBind/params"
 
 log "Downloading AF2 parameters from S3: alphafold_params_2021-07-14.tar"
 # show progress bar, no --quiet
@@ -30,9 +30,9 @@ log "Removing AF2 tarball"
 rm alphafold_params_2021-07-14.tar
 
 # ── 2. Prepare UniClust30 database ──────────────────────────────────────────
-log "Creating UniClust30 directory: ${HOME}/evobind/data"
-mkdir -p "${HOME}/evobind/data"
-cd "${HOME}/evobind/data"
+log "Creating UniClust30 directory: ${HOME}/EvoBind/data"
+mkdir -p "${HOME}/EvoBind/data"
+cd "${HOME}/EvoBind/data"
 
 log "Downloading UniClust30 archive from S3"
 aws s3 cp s3://crayonai.datasets/uniclust30_2018_08_hhsuite.tar.gz ./ \
@@ -45,6 +45,6 @@ log "Removing UniClust30 tarball"
 rm uniclust30_2018_08_hhsuite.tar.gz
 
 log "=== Data preparation complete ==="
-log "AF2 params directory: ${HOME}/evobind/params"
-log "UniClust30 DB directory: ${HOME}/evobind/data"
+log "AF2 params directory: ${HOME}/EvoBind/params"
+log "UniClust30 DB directory: ${HOME}/EvoBind/data"
 log "Full log written to ${LOGFILE}"
