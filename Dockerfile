@@ -22,7 +22,10 @@ RUN wget -qO /tmp/miniconda.sh \
       https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
     bash /tmp/miniconda.sh -b -p "$CONDA_DIR" && \
     rm /tmp/miniconda.sh && \
-    conda clean -afy
+    conda clean -afy && \
+    conda activate evobind && \
+    pip install --upgrade "jax[cuda12_pip]==0.4.30" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html && \
+    conda deactivate
 
 # 3) Enable 'conda activate' in non-interactive shells
 RUN conda init bash
