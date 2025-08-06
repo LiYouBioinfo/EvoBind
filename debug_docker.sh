@@ -12,7 +12,7 @@ set -euo pipefail
 #    --quiet suppresses per-file progress; errors will still be shown
 aws s3 cp s3://crayonai.us-east-1/evobind-full.tar - --only-show-errors | docker load
 
-# ── 3) Launch an interactive container for debugging
+# ── 2) Launch an interactive container for debugging
 docker run --rm -it \
   --name evobind_debug \
   --gpus all \
