@@ -8,13 +8,9 @@ set -euo pipefail
 #########################################
 
 
-# ── 1) Download the pre–built Docker image tarball from S3
+# ── 1) Load the image from S3
 #    --quiet suppresses per-file progress; errors will still be shown
-aws s3 cp s3://crayonai.docker/evobind-full.tar ./ --quiet
-
-# ── 2) Load the image into your local Docker registry
-#    This populates the image named "evobind-full:latest"
-docker load -i evobind-full.tar
+aws s3 cp s3://crayonai.us-east-1/evobind-full.tar - --only-show-errors | docker load
 
 # ── 3) Launch an interactive container for debugging
 docker run --rm -it \
