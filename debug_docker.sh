@@ -16,7 +16,7 @@ aws s3 cp s3://crayonai.us-east-1/evobind-full.tar - --only-show-errors | docker
 docker run --rm -it \
   --name evobind_debug \
   --gpus all \
-  -v "$HOME/evobind/params":/opt/EvoBind/src/AF2/params:ro \
-  -v "$HOME/evobind/data":/opt/EvoBind/data \
+  -v "$HOME/EvoBind/params":/opt/EvoBind/src/AF2/params:ro \
+  -v "$HOME/EvoBind/data":/opt/EvoBind/data \
   --entrypoint bash \
   evobind-full
