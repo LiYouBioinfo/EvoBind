@@ -49,11 +49,15 @@ RUN conda run -n evobind pip install --upgrade \
       -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 
 # 6) Build HH-suite from source
-RUN git clone https://github.com/soedinglab/hh-suite.git && \
-    mkdir -p hh-suite/build && cd hh-suite/build && \
-    cmake -DCMAKE_INSTALL_PREFIX=. .. && \
-    make -j"$(nproc)" && make install && \
-    cd ../..
+#RUN git clone https://github.com/soedinglab/hh-suite.git && \
+#    mkdir -p hh-suite/build && cd hh-suite/build && \
+#    cmake -DCMAKE_INSTALL_PREFIX=. .. && \
+#    make -j"$(nproc)" && make install && \
+#    cd ../..
+
+WORKDIR /opt/EvoBind
+RUN wget https://dev.mmseqs.com/hhsuite/hhsuite-linux-avx2.tar.gz
+RUN tar xzvf hhsuite-linux-avx2.tar.gz && rm hhsuite-linux-avx2.tar.gz
 
 # 7) Default to bash for manual testing
 ENTRYPOINT ["bash"]
