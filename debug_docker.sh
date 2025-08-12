@@ -19,4 +19,4 @@ docker run --rm -it \
   -v "$HOME/EvoBind/params":/opt/EvoBind/src/AF2/params:ro \
   -v "$HOME/EvoBind/data":/opt/EvoBind/data \
   --entrypoint bash \
-  evobind-full
+  evobind-design:v1.0
