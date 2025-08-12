@@ -18,7 +18,7 @@ HHBLITSDB=$BASE/data/uniclust30_2018_08/uniclust30_2018_08
 if test -f $DATADIR/$RECEPTORID'.a3m'; then
 	echo $DATADIR/$RECEPTORID'.a3m' exists
 else
-	$BASE/hh-suite/build/bin/hhblits -i $RECEPTORFASTA -d $HHBLITSDB -E 0.001 -all -n 2 -oa3m $DATADIR/$RECEPTORID'.a3m'
+	$BASE/hhsuite/bin/hhblits -i $RECEPTORFASTA -d $HHBLITSDB -E 0.001 -all -n 2 -oa3m $DATADIR/$RECEPTORID'.a3m'
 fi
 #MSA
 MSA=$DATADIR/$RECEPTORID'.a3m'
